@@ -1,6 +1,6 @@
 // this file exists because react and react-native currently do not share
-// packages, as in React 0.14. It also handles style differently, where
-// browser React flattens it to CSS.
+// packages, as of React 0.14 (Nov 2015). You could also easily swap in a
+// React API compatible alternative, if you'd like.
 
 function forEach(obj, cb) {
   var keys = Object.keys(obj);
@@ -30,8 +30,9 @@ function assign(dest) {
 }
 
 module.exports = function(React, flattenStyle) {
-  flattenStyle = flattenStyle || true;
+  flattenStyle = flattenStyle == null ? false : flattenStyle;
   var REACT_BUILDER = {
+    isBuilder: 'react',
     prop: function(name, value) {
       if(name == 'style') {
         assign(this.propObj.style, name);
@@ -86,9 +87,12 @@ module.exports = function(React, flattenStyle) {
 
       var childListLength = this.childList.length;
       if(childListLength == 0) {
-        return React.createComponent(this.component, newProps);
+        return React.createElement(this.component, newProps);
       } if(childListLength == 1) {
-        return React.createComponent(this.component, newProps, this.childList[0]);
+        var el = this.childList[0];
+        if(el.isBuilder && el.isBuilder === 'react' && el.build)
+          el = el.build();
+        return React.createElement(this.component, newProps, el);
       } if(childListLength > 1) {
         var args = [
           this.component,
@@ -99,10 +103,13 @@ module.exports = function(React, flattenStyle) {
         var length = this.childList.length;
 
         for(; index < length; index++) {
-          args[index + 2] = this.childList[index];
+          var el = this.childList[index];
+          if(el.isBuilder && el.isBuilder === 'react' && el.build)
+            el = el.build();
+          args[index + 2] = el;
         }
 
-        return React.createComponent.apply(React, args);
+        return React.createElement.apply(React, args);
       }
     }
   };
