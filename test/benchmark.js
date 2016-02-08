@@ -1,7 +1,7 @@
 var suite = new (require('benchmark').Suite);
 
 var R = require('./react/core.js')({
-  createComponent: function() {
+  createElement: function() {
   }
 }).R;
 

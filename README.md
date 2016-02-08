@@ -2,7 +2,7 @@ ui-builder
 ===
 
 ui-builder is an implementation of the Builder pattern to create UI elements for
-the vanilla DOM, React, and React Native.
+React, React Native, and vanilla DOM (in the future).
 
 When used with React, Builders provide beyond a suitable replacement for JSX,
 but also a new paradigm that can be used to supercharge your application.
@@ -18,8 +18,8 @@ For convenience, a Builder implementation is also provided for the DOM, however
 the immutability of the resulting DOM element cannot be guaranteed or expected.
 
 ui-builder is heavily optimized for speed, and to contain as lightweight of a
-footprint as possible, citing only React / React Native as dependencies
-(shouldn't affect you unless you link to the other submodule).
+footprint as possible, citing only React as it's only dependency, with React
+Native being an optional dependency.
 
 Inspired by, obviously, the builder pattern. Not directly inspired by Uber's
 [r-dom](https://github.com/uber/r-dom), but somewhat similar in syntax.

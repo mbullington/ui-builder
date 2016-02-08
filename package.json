@@ -4,7 +4,8 @@
   "description": "Builder pattern in UI components, made for React, React Native, and regular DOM.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./node_modules/ava/cli.js test/test.js",
+    "benchmark": "node ./test/benchmark.js"
   },
   "repository": {
     "type": "git",
@@ -27,10 +28,14 @@
   },
   "homepage": "https://github.com/mbullington/ui_builder.js#readme",
   "peerDependencies": {
-    "react": "^0.14.3",
+    "react": "^0.14.7",
     "react-native": "^0.16.0-rc"
   },
   "devDependencies": {
-    "benchmark": "^1.0.0"
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "ava": "^0.11.0",
+    "benchmark": "^1.0.0",
+    "cheerio": "^0.20.0"
   }
 }

@@ -29,27 +29,58 @@ function assign(dest) {
   return dest;
 }
 
+function typeOf(value) {
+  var returned = Object.prototype.toString.call(value);
+  return returned.substring(1, returned.length - 1).split(' ')[1].toLowerCase();
+}
+
 module.exports = function(React, flattenStyle) {
   flattenStyle = flattenStyle == null ? false : flattenStyle;
   var REACT_BUILDER = {
     isBuilder: 'react',
     prop: function(name, value) {
+      if(!name)
+        throw new Error('ui-builder/react#prop called without any arguments!');
+
       if(name == 'style') {
-        assign(this.propObj.style, name);
+        assign(this.propObj.style, value);
         return;
       }
-      this.propObj[name] = value;
+
+      if(value != null) {
+        this.propObj[name] = value;
+      } else {
+        if(typeOf(name) != 'object')
+          throw new Error('ui-builder/react#prop has an invalid first argument.');
+
+        if(name.style) {
+          assign(this.propObj.style, name.style);
+          delete name.style;
+        }
+
+        assign(this.propObj, name);
+      }
+
       return this;
     },
     style: function(name, value) {
-      if(value !== undefined) {
+      if(!name)
+        throw new Error('ui-builder/react#style called without any arguments!');
+
+      if(value != null) {
         this.propObj.style[name] = value;
       } else {
+        if(typeOf(name) != 'object')
+          throw new Error('ui-builder/react#style has an invalid first argument.');
         assign(this.propObj.style, name);
       }
+
       return this;
     },
     child: function(child) {
+      if(!child)
+        return this;
+
       if(arguments.length == 1) {
         this.childList.push(child);
         return this;
@@ -67,6 +98,9 @@ module.exports = function(React, flattenStyle) {
       return this;
     },
     children: function(children) {
+      if(!children || children.length === 0)
+        return this;
+
       this.childList = this.childList.concat(children);
       return this;
     },
@@ -116,6 +150,9 @@ module.exports = function(React, flattenStyle) {
 
   return {
     R: function(component) {
+      if(!component)
+        throw new Error("ui-builder/react requires a component in it's constructor!");
+
       var builder = function(name, value) {
         builder.prop(name, value);
         return builder;
