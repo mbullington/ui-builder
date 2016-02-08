@@ -14,12 +14,10 @@ of real world opportunities inside applications using a React workflow, where
 you can "lazily" load in properties, or load in properties as they are scoped,
 in the case of something like a router.
 
-For convenience, a Builder implementation is also provided for the DOM, however
-the immutability of the resulting DOM element cannot be guaranteed or expected.
-
-ui-builder is heavily optimized for speed, and to contain as lightweight of a
-footprint as possible, citing only React as it's only dependency, with React
-Native being an optional dependency.
+ui-builder is optimized to be fast, and tries to contain as lightweight of a
+footprint as possible, citing only React and React Native as peer dependencies
+(it's assumed if you are using ui-builder, you'll have one of these included
+with your project as well).
 
 Inspired by, obviously, the builder pattern. Not directly inspired by Uber's
 [r-dom](https://github.com/uber/r-dom), but somewhat similar in syntax.
