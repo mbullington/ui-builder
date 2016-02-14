@@ -1,6 +1,6 @@
 {
   "name": "ui_builder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Builder pattern in UI components, made for React, React Native, and regular DOM.",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mbullington/ui_builder.js.git"
+    "url": "git+https://github.com/mbullington/ui_builder.git"
   },
   "keywords": [
     "react",
@@ -24,9 +24,9 @@
   "author": "Michael Bullington <michael@bullington.xyz>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mbullington/ui_builder.js/issues"
+    "url": "https://github.com/mbullington/ui_builder/issues"
   },
-  "homepage": "https://github.com/mbullington/ui_builder.js#readme",
+  "homepage": "https://github.com/mbullington/ui_builder#readme",
   "peerDependencies": {
     "react": "^0.14.7",
     "react-native": "^0.16.0-rc"

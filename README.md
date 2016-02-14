@@ -1,6 +1,25 @@
 ui-builder
 ===
 
+```js
+import React, { Component } from 'react';
+import { R } from 'ui-builder';
+
+export class TestComponent extends Component {
+  render() {
+    return R('div')
+      // function call is same as .prop
+      ('className', 'my-little-div-test')
+      // .style is automatically passed to component as style prop
+      .style('color', 'red')
+      .child(R('span')
+        .child('Hello World!'))
+      // build only needs to be called on top level
+      .build();
+  }
+}
+```
+
 ui-builder is an implementation of the Builder pattern to create UI elements for
 React, React Native, and vanilla DOM (in the future).
 
