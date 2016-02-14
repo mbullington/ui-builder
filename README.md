@@ -1,4 +1,4 @@
-ui-builder
+ui-builder [![Build Status](https://travis-ci.org/mbullington/ui-builder.svg?branch=master)](https://travis-ci.org/mbullington/ui-builder)
 ===
 
 ui-builder is an implementation of the Builder pattern to create UI elements for
