@@ -1,9 +1,9 @@
-ui-builder [![Build Status](https://travis-ci.org/mbullington/ui-builder.svg?branch=master)](https://travis-ci.org/mbullington/ui-builder)
+ui_builder [![Build Status](https://travis-ci.org/mbullington/ui-builder.svg?branch=master)](https://travis-ci.org/mbullington/ui-builder)
 ===
 
 ```js
 import React, { Component } from 'react';
-import { R } from 'ui-builder';
+import { R } from 'ui_builder';
 
 export class TestComponent extends Component {
   render() {
