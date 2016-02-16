@@ -1,4 +1,4 @@
-ui_builder [![Build Status](https://travis-ci.org/mbullington/ui-builder.svg?branch=master)](https://travis-ci.org/mbullington/ui-builder)
+ui_builder [![Build Status](https://travis-ci.org/mbullington/ui_builder.svg?branch=master)](https://travis-ci.org/mbullington/ui_builder)
 ===
 
 ```js
