@@ -165,6 +165,16 @@ module.exports = function(React, flattenStyle) {
       builder.childList = [];
 
       assign(builder, REACT_BUILDER);
+
+      if(arguments.length > 1) {
+        var index = 1;
+        var length = arguments.length;
+
+        for(; index < length; index++) {
+          builder.child(arguments[index]);
+        }
+      }
+      
       return builder;
     }
   };

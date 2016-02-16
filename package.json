@@ -1,6 +1,6 @@
 {
   "name": "ui_builder",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Builder pattern in UI components, made for React, React Native, and regular DOM.",
   "main": "index.js",
   "scripts": {
